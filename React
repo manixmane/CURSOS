@@ -1,5 +1,8 @@
 comando para instalar typesript en proyectos react
 npm install --save typescript @types/node @types/react @types/react-dom @types/jest
 
+para realizar peticiones a apis web
+npm install --save axios
+
 Para estilos SCSS
 npm install node-sass --save
