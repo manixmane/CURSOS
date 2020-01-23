@@ -10,10 +10,11 @@ import {
   TableHead,
   TableRow, 
   Paper,
-  Button,
   IconButton
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ListAltIcon from '@material-ui/icons/ListAlt';
 
 type Props={}
 
@@ -73,6 +74,20 @@ class Users extends React.Component<Props, State>{
                           }
                         }}>
                           <EditIcon fontSize="large"/>
+                        </IconButton>
+                        <IconButton aria-label="Eliminar" style={{margin:theme.spacing(1)}} onClick={()=>{
+                          if(row!==null){
+                            this.onClickEditar(row);
+                          }
+                        }}>
+                          <DeleteIcon fontSize="large"/>
+                        </IconButton>
+                        <IconButton aria-label="Consultar" style={{margin:theme.spacing(1)}} onClick={()=>{
+                          if(row!==null){
+                            this.onClickEditar(row);
+                          }
+                        }}>
+                          <ListAltIcon fontSize="large"/>
                         </IconButton>
                         </TableCell>
                     </TableRow>
