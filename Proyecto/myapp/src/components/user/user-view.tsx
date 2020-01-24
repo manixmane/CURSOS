@@ -1,25 +1,34 @@
 import React from 'react';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import User from '../../interfaces/users/user';
-//import Avatar from '@material-ui/core/Avatar';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import {IconButton} from '@material-ui/core';
+import Rodal from 'rodal';
 
 type Props={
-    user:User,
-    show:boolean
+    user:User
 };
 
 type State ={
     showModal:boolean
 };
 
+const StyleModal = {
+  overlay: {
+    backgroundColor: 'papayawhip'
+  },
+  content: {
+    color: 'lightsteelblue'
+  }
+}
+
 
 class UserView extends React.Component<Props, State> {
   constructor (props:Props) {
     super(props);
     this.state = {
-      showModal: props.show
+      showModal: false
     };
-
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
@@ -29,7 +38,7 @@ class UserView extends React.Component<Props, State> {
   }
 
   handleCloseModal () {
-    this.setState({ showModal: false });
+    this.setState({showModal:false});
   }
 
   public modalState () {
@@ -38,22 +47,30 @@ class UserView extends React.Component<Props, State> {
   }
 
   render () {
-      const {user,show}=this.props;
-      console.log('info. modal',user, show,this.state.showModal);
+      const {user}=this.props;
+      console.log('info. modal',user);
     return (
       <div>
-        {/* <button onClick={this.handleOpenModal}>Trigger Modal</button> */}
-        <Modal
-          isOpen={show}
+        <IconButton 
+        aria-label="Consultar" 
+        onClick={this.handleOpenModal}>
+          <ListAltIcon fontSize="large"/>
+        </IconButton>
+        {/* <Modal style={StyleModal}
+          isOpen={this.modalState()}
           contentLabel="Minimal Modal Example"
+          onRequestClose={this.handleCloseModal}
         >
             <label>Id: {user.id}</label>
-            <label>Nombre: {user.id}</label>
-            <label>Apellido: {user.id}`</label>
-            <label>Email: {user.id}</label>
+            <label>Nombre: {user.first_name}</label>
+            <label>Apellido: {user.last_name}</label>
+            <label>Email: {user.email}</label>
             <label>Avatar:<img src={user.avatar}/></label>
             <button onClick={this.handleCloseModal}>Aceptar</button>
-        </Modal>
+        </Modal> */}
+        <Rodal visible={this.modalState()} onClose={this.handleCloseModal}>
+          <div>Hola mundo</div>
+        </Rodal>
       </div>
     );
   }
